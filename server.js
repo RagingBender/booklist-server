@@ -30,6 +30,10 @@ app.get('/api/v1/books', (req, res) => {
     .catch(console.error);
 });
 
+app.get('/hi', (req, res) => {
+  res.send('hi');
+});
+
 app.get('/api/v1/books/:id', (req, res) => {
   client.query(`
   SELECT * FROM books 
