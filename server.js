@@ -22,7 +22,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 // API Endpoints
-app.get('api/v1/books', (req, res) => {
+app.get('/api/v1/books', (req, res) => {
   client.query(`
   SELECT book_id, title, author, image_url, isbn 
   FROM books;`)
@@ -30,7 +30,7 @@ app.get('api/v1/books', (req, res) => {
     .catch(console.error);
 });
 
-app.get('api/v1/books/:id', (req, res) => {
+app.get('/api/v1/books/:id', (req, res) => {
   client.query(`
   SELECT * FROM books 
   WHERE book_id=$1;`,
@@ -44,7 +44,7 @@ app.get('api/v1/books/:id', (req, res) => {
     });
 });
 
-app.post('api/v1/books/', (req, res) => {
+app.post('/api/v1/books/', (req, res) => {
   client.query(`
   INSERT INTO books(title, author, image_url, isbn, description) 
   VALUES ($1,$2,$3,$4,$5) 
