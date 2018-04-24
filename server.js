@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 // API Endpoints
 app.get('/api/v1/books', (req, res) => {
   client.query(`
-  SELECT book_id, title, author, img_url, isbn 
+  SELECT book_id, title, author, image_url, isbn 
   FROM books;`)
     .then(results => res.send(results.rows))
     .catch(console.error);
@@ -56,10 +56,10 @@ app.get('/api/v1/books/:id', (req, res) => {
 
 app.post('/api/v1/books/', (req, res) => {
   client.query(`
-  INSERT INTO books(title, author, img_url, isbn, description) 
+  INSERT INTO books(title, author, image_url, isbn, description) 
   VALUES ($1,$2,$3,$4,$5) 
   ON CONFLICT DO NOTHING;`,
-    [req.body.title, req.body.author, req.body.img_url, req.body.isbn, req.body.description],
+    [req.body.title, req.body.author, req.body.image_url, req.body.isbn, req.body.description],
     function (err) {
       if (err) console.error(err);
       res.send('insertion completed');
