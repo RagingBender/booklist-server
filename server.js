@@ -31,8 +31,13 @@ app.get('/api/v1/books', (req, res) => {
     .catch(console.error);
 });
 
-app.get('/hi', (req, res) => {
-  res.send('hi');
+// app.get('/hi', (req, res) => {
+//   res.send('hi');
+// });
+
+
+app.get('/', (req, res) => {
+  res.send('remove me');
 });
 
 app.get('/api/v1/books/:id', (req, res) => {
